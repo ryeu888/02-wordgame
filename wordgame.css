@@ -1,0 +1,38 @@
+body {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100vh;
+ } 
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+p {
+	font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+	font-size: 6rem;
+	font-weight:  100;
+	letter-spacing: 2px;
+	text-align: center;
+	background-image: -webkit-linear-gradient(0deg, rgba(42,157,143,1), rgba(233,196,106,1),rgba(231,111,81,1));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	-webkit-animation: hue 1s infinite linear;
+}
+
+@-webkit-keyframes hue {
+  from {
+    -webkit-filter: hue-rotate(0deg);
+  }
+  to {
+    -webkit-filter: hue-rotate(-360deg);
+  }
+}
