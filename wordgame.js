@@ -45,7 +45,7 @@ let guesses = 0;
 const inputLength = document.getElementById("customLength");
 function startGame() {
     numLetters=inputLength.value;
-    if (numLetters===0) or (numLetters===1){
+    if (numLetters===0 || numLetters===1) {
         numLetters=5
     }
     //get the array that contains words with numLetters
