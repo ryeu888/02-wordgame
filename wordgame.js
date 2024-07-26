@@ -51,7 +51,9 @@ function startGame() {
     //choose random word from the array
     let randomIndex=randInt(0,popularWordsLength.length);
     secret = popularWordsLength[randomIndex];
-
+    isGameOver = false;
+    guesses = 0;
+    guessHistory.innerHTML = "";
 }
 
 const guessWord=document.getElementById("guess-word")
@@ -81,7 +83,7 @@ function makeGuess() {
         else if(!correct) {
             let copysecret = secret;
             for (let x =0; x < numLetters; x++){
-            if(guess[i] === copysecret[x]){
+            if(guess[i] === copysecret[x] & !outofplace){
                 guessHistory.innerHTML += `<span class="out-of-place-letter">${letter}</span>` ;
                 copysecret[x] = '';
                 outofplace=true;
@@ -114,7 +116,7 @@ function randInt(min, max) {
 }
 function outOfMoves(){
     isGameOver = true;
-    gameOver.innerHTML = "You took too many moves";
+    gameOver.innerHTML = `You took too many moves, the word was: ${secret}`;
 }
 function Win(){
     isGameOver = true;
