@@ -18,8 +18,12 @@
     <input id="guess-word" oninput="makeGuess()">
     <p id="guess-history">HISTORY:<br></p>
     <p id="gameover"></p>
-    <script src="./wordgame.js"></script>
     <button onclick="loadGame()">Reset Game Button</button>
+    <br>
+    <label>Set the custom length: </label>
+    <br>
+    <input type="number" id="customLength" min="2" max="15">
+    <script src="./wordgame.js"></script>
 </center>
 
 </body>

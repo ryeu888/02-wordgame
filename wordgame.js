@@ -1,13 +1,12 @@
 let popularWords;
 let allWords;
 
-
 function loadGame() {
     Promise.all([
         fetch('./popular.txt')
             .then(response => response.text())
             .then(text => {
-                popularWords = text.split("\r\n");
+                popularWords = text.replaceAll("\r", "").split("\n");
                 popularWords.pop(); // Remove the '' at the end
             })
             .catch(error => {
@@ -39,13 +38,16 @@ function wordsLoaded() {
     }
     startGame()
 }
-
-let numLetters=5;
+let numLetters;
 let allowedGuesses = 5;
 let isGameOver = false;
 let guesses = 0;
-
+const inputLength = document.getElementById("customLength");
 function startGame() {
+    numLetters=inputLength.value;
+    if (numLetters===0) or (numLetters===1){
+        numLetters=5
+    }
     //get the array that contains words with numLetters
     let popularWordsLength=popularWordsSorted[numLetters];
     //choose random word from the array
@@ -70,6 +72,8 @@ function makeGuess() {
         guessWord.value = "";
         return;
     } 
+    var audio = new Audio("mixkit-retro-game-notification-212.wav");
+    audio.play();
     console.log('Guess: "${guess}"');
     // The guess is a real word with the right # of letters
     for (let i =0; i < numLetters; i++){
@@ -117,10 +121,14 @@ function randInt(min, max) {
 function outOfMoves(){
     isGameOver = true;
     gameOver.innerHTML = `You took too many moves, the word was: ${secret}`;
+    var audio = new Audio("mixkit-arcade-retro-game-over-213.wav");
+    audio.play();
 }
 function Win(){
     isGameOver = true;
     gameOver.innerHTML = `<span class="Wordle">WORDLE! IN ${guesses} GUESSES</span>`;
+    var audio = new Audio("mixkit-achievement-bell-600.wav");
+    audio.play();
 }
 
 // TODO: copy randInt
